@@ -26,7 +26,7 @@ const createContact = asyncHandler( async (req, res) => {
 
 
 // @desc Update a contact
-// @route PUT /api/contacts
+// @route PUT /api/contacts/:id
 // @access public 
 const updateContact = asyncHandler (async (req, res) => {
     res
@@ -35,8 +35,8 @@ const updateContact = asyncHandler (async (req, res) => {
 });
 
 
-// @desc Get a contact
-// @route GET /api/contacts
+// @desc Get contact
+// @route GET /api/contacts/:id
 // @access public 
 const getContact = asyncHandler( async (req, res) => {
     res
@@ -45,7 +45,7 @@ const getContact = asyncHandler( async (req, res) => {
 });
 
 // @desc Delete a contact
-// @route DELETE /api/contacts
+// @route DELETE /api/contacts/:id
 // @access public 
 const deleteContact = asyncHandler( async (req, res) => {
     res
