@@ -1,18 +1,18 @@
 const asyncHandler = require("express-async-handler");
 
-// @desc Get all contacts
-// @route GET /api/contacts
+// @desc Get all tasks
+// @route GET /api/tasks
 // @access public 
-const getContacts = asyncHandler(async (req, res) => {
+const getTasks = asyncHandler(async (req, res) => {
     res
     .status(200)
     .json({message: "Get all tasks"});
 });
 
-// @desc Create a contact
-// @route POST /api/contacts
+// @desc Create a task
+// @route POST /api/tasks
 // @access public 
-const createContact = asyncHandler( async (req, res) => {
+const createTask = asyncHandler( async (req, res) => {
     console.log("The request body is: ", req.body);
     const { name, email, phone} = req.body;
     if(!name || !email || !phone) {
@@ -21,36 +21,36 @@ const createContact = asyncHandler( async (req, res) => {
     }
     res
     .status(201)
-    .json({message: "Contact created"});
+    .json({message: "Task created"});
 });
 
 
 // @desc Update a contact
-// @route PUT /api/contacts/:id
+// @route PUT /api/tasks/:id
 // @access public 
-const updateContact = asyncHandler (async (req, res) => {
+const updateTask = asyncHandler (async (req, res) => {
     res
     .status(200)
-    .json({message: "Contact Updated"});
+    .json({message: "Task Updated"});
 });
 
 
-// @desc Get contact
-// @route GET /api/contacts/:id
+// @desc Get task
+// @route GET /api/tasks/:id
 // @access public 
-const getContact = asyncHandler( async (req, res) => {
+const getTask = asyncHandler( async (req, res) => {
     res
     .status(200)
-    .json({message: `Contact ${req.params.id}`});
+    .json({message: `Task ${req.params.id}`});
 });
 
-// @desc Delete a contact
-// @route DELETE /api/contacts/:id
+// @desc Delete a task
+// @route DELETE /api/tasks/:id
 // @access public 
-const deleteContact = asyncHandler( async (req, res) => {
+const deleteTask = asyncHandler( async (req, res) => {
     res
     .status(200)
-    .json({message: `Delete Contact ${req.params.id}`});
+    .json({message: `Delete task ${req.params.id}`});
 });
 
 module.exports = { getTasks, getTask, createTask, updateTask, deleteTask };
