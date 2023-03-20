@@ -1,23 +1,13 @@
 const express = require("express");
-const mongoose = require('mongoose');
+const connectDb = require("./config/dbConnection");
 const errorHandler = require("./middleware/errorHandler");
 const dotenv = require("dotenv").config();
+
+connectDb();
 
 const app = express();
 
 const port = process.env.PORT || 5001;
-const mongoString = process.env.DATABASE_URL
-
-mongoose.connect(mongoString);
-const database = mongoose.connection;
-
-database.on('error', (error) => {
-    console.log(error)
-})
-
-database.once('connected', () => {
-    console.log('Database Connected');
-})
 
 app.use(express.json()); // Convert all the request & response as JSON
 app.use('/api/contacts', require("./routes/contactRoutes"));
