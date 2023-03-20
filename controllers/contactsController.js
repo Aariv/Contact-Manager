@@ -1,4 +1,5 @@
 const asyncHandler = require("express-async-handler");
+const Contact = require("../models/Contact");
 
 // @desc Get all contacts
 // @route GET /api/contacts
@@ -18,6 +19,20 @@ const createContact = asyncHandler( async (req, res) => {
     if(!name || !email || !phone) {
         res.status(400);
         throw new Error("All fields are mandatory");
+    }
+    console.log("Validation completed");
+    const data = new Contact({
+        name: req.body.name,
+        email: req.body.email,
+        phone: req.body.phone
+    });
+    console.log("POJO constructed", req.body);
+    try {
+        const dataToSave = await data.save();
+        console.log("Data Persisted ", dataToSave);
+    } catch (error) {
+        res.status(400).json({message: error.message});
+        console.log("Error");
     }
     res
     .status(201)
