@@ -1,4 +1,5 @@
 const asyncHandler = require("express-async-handler");
+const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
 const User = require("../models/User");
@@ -54,12 +55,39 @@ const createUser = asyncHandler(async (req, res) => {
 });
 
 // @desc Login user
-// @route POST /api/login
+// @route POST /api/users/login
 // @access public 
 const loginUser = asyncHandler(async (req, res) => {
-    res
-    .status(200)
-    .json({message: `Create a user ${req.body}`});
+    const {username, password} = req.body;
+    if(!username || !password) {
+        res.status(400);
+        throw new Error("All fields are mandatory");
+    }
+    const user = await User.findOne({email});
+    console.log("Found user", user);
+    // Compare password
+    if(user && (await bcrypt.compare(password, user.password))) {
+        // Provide access token
+        console.log("Creating access token for the user", user);
+        const accessToken = jwt.sign(
+            {
+                user: {
+                    username: user.username,
+                    email: user.email,
+                    id: user.id
+                },
+            }, 
+            process.env.ACCESS_TOKEN_SECRET,
+            {
+                expiresIn: "1m"
+            }
+        );
+        console.log("Access token for the user", accessToken);
+        res.status(200).json({accessToken})
+    } else {
+        res.status(401);
+        throw new Error("email or password is not valid");
+    }
 });
 
 // @desc Update a user
@@ -80,4 +108,4 @@ const deleteUser = asyncHandler(async (req, res) => {
     .json({message: `Delete a user ${req.params.id}`});
 });
 
-module.exports = { getUsers, getUser, createUser, updateUser, deleteUser };
+module.exports = { getUsers, getUser, createUser, loginUser, updateUser, deleteUser };
