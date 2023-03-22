@@ -8,18 +8,21 @@ const User = require("../models/User");
 // @route GET /api/users
 // @access public 
 const getUsers = asyncHandler(async (req, res) => {
+    const users = Contact.find();
     res
     .status(200)
-    .json({message: "Get all users"});
+    .json(users);
 });
 
 // @desc Get a user
 // @route GET /api/users/:id
 // @access public 
 const getUser = asyncHandler(async (req, res) => {
+    const user = User.findById(req.params.id);
+    console.log("Contact from Db: " + user);
     res
     .status(200)
-    .json({message: `Get a user ${req.params.id}`});
+    .json(contact);
 });
 
 // @desc Create a user
@@ -105,4 +108,14 @@ const deleteUser = asyncHandler(async (req, res) => {
     .json({message: `Delete a user ${req.params.id}`});
 });
 
-module.exports = { getUsers, getUser, createUser, loginUser, updateUser, deleteUser };
+// @desc Get current user
+// @route GET /api/users/current
+// @access private 
+const currentUser = asyncHandler(async (req, res) => {
+    console.log("Req reached");
+    res
+    .status(200)
+    .json(req.user);
+});
+
+module.exports = { getUsers, getUser, createUser, loginUser, updateUser, deleteUser, currentUser };
