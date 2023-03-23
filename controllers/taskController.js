@@ -1,14 +1,14 @@
 const asyncHandler = require("express-async-handler");
-const Contact = require("../models/Contact");
+const Task = require("../models/Task");
 
 // @desc Get all tasks
 // @route GET /api/tasks
 // @access public 
 const getTasks = asyncHandler(async (req, res) => {
-    const contacts = Contact.find();
+    const tasks = Task.find();
     res
     .status(200)
-    .json(contacts);
+    .json(tasks);
 });
 
 // @desc Create a task
