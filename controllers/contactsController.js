@@ -79,7 +79,7 @@ const getContact = asyncHandler( async (req, res) => {
 // @route DELETE /api/contacts/:id
 // @access public 
 const deleteContact = asyncHandler( async (req, res) => {
-
+    console.debug("Delete Call");
     const contact = await Contact.findById(req.params.id);
     if(!contact) {
         res.status(404);
