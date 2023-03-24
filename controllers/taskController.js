@@ -40,9 +40,14 @@ const createTask = asyncHandler( async (req, res) => {
 // @route PUT /api/tasks/:id
 // @access public 
 const updateTask = asyncHandler (async (req, res) => {
+    const updatedContact = await Task.findByIdAndUpdate(
+        req.params.id,
+        req.body,
+        { new: true}
+    );
     res
     .status(200)
-    .json({message: "Task Updated"});
+    .json(updatedContact);
 });
 
 
@@ -50,7 +55,7 @@ const updateTask = asyncHandler (async (req, res) => {
 // @route GET /api/tasks/:id
 // @access public 
 const getTask = asyncHandler( async (req, res) => {
-    const task = Contact.findById(req.params.id);
+    const task = Task.findById(req.params.id);
     res
     .status(200)
     .json(task);
@@ -68,7 +73,7 @@ const deleteTask = asyncHandler( async (req, res) => {
     await task.deleteOne(req.params.id);
     res
     .status(200)
-    .json({message: `Deleted task ${task.name}`});
+    .json(task);
 });
 
 module.exports = { getTasks, getTask, createTask, updateTask, deleteTask };
