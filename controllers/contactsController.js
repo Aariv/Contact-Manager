@@ -25,7 +25,8 @@ const createContact = asyncHandler( async (req, res) => {
     const data = new Contact({
         name: req.body.name,
         email: req.body.email,
-        phone: req.body.phone
+        phone: req.body.phone,
+        user_id: req.user.id
     });
     console.log("POJO constructed", req.body);
     try {
