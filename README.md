@@ -17,7 +17,7 @@
 15. Handle Relationships
 16. Protected Results
 17. User Authorization
-18. API Testing
+18. API Testing - (Pending)
 
 
 # REST API Convention
