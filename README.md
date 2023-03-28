@@ -21,11 +21,27 @@
 
 
 # REST API Convention
-CRUD Actions 
+CRUD Actions for Contacts
 ```http
 GET /api/contacts
 GET /api/contacts/:id
 POST /api/contacts
 PUT /api/contacts/:id
 DELETE /api/contacts/:id
+```
+CRUD Actions for Users
+```http
+GET /api/users
+GET /api/users/:id
+POST /api/users
+PUT /api/users/:id
+DELETE /api/users/:id
+```
+CRUD Actions for Tasks
+```http
+GET /api/tasks
+GET /api/tasks/:id
+POST /api/tasks
+PUT /api/tasks/:id
+DELETE /api/tasks/:id
 ```
