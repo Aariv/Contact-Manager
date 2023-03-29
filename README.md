@@ -4,21 +4,25 @@
 2. Create express server
 3. Thunder Client Setup
 4. Express Router Setup
-5. Error Handling & Async Handler
-6. Express Middleware
-7. Mondo DB setup
-8. Mongoose Schema
-9. CRUD API
-10. User Authentication
-11. Registration & Login API
-12. Controllers & DB Operations
-13. Password Hashing & Comparing
-14. Sign / Verify JWT Token
-15. Handle Relationships
-16. Protected Results
-17. User Authorization
-18. API Testing
-
+5. Create Contact Controller & CRUD
+6. Mulitple HTPP methods per route
+7. Error Handling & Async Handler
+8. Express Middleware POST method
+9. Express - Throw Error
+10. Express Async Handler
+11. Mondo DB setup
+12. Mongoose Schema
+13. CRUD API get all Contacts
+14. CRUD API create contact
+15. User Authentication
+16. Registration & Login API
+17. Controllers & DB Operations
+18. Password Hashing & Comparing
+19. Sign / Verify JWT Token
+20. Handle Relationships
+21. Protected Results
+22. User Authorization
+23. API Testing
 
 # REST API Convention
 CRUD Actions for Contacts
