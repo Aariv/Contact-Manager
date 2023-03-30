@@ -1,5 +1,7 @@
 # Contact App (Node JS + Express Framework)
 
+The following concepts were practiced.
+
 1. Express Project Setup
 2. Create express server
 3. Thunder Client Setup
