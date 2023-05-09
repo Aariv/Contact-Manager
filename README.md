@@ -27,6 +27,7 @@ The UI for this backend can be found here:- https://github.com/Aariv/Contact-Man
 21. Protected Results
 22. User Authorization
 23. API Testing
+24. API Scaling
 
 # REST API Convention
 CRUD Actions for Contacts
